@@ -4,7 +4,7 @@
       <router-link class="component-link" 
         v-for="note in allNotes" :key="note.id" :to="'/notes/' + note.id"
       >
-        <Note :note="note"/>
+        <NotePreview :note="note"/>
       </router-link>
     </div>
   </div>
@@ -12,14 +12,14 @@
 
 <script>
 import {mapGetters} from 'vuex';
-import Note from '@/components/Note';
+import NotePreview from '@/components/NotePreview';
 
 export default {
   name: 'Home',
   computed: mapGetters(['allNotes']),
   components:{
-    Note
-  }
+    NotePreview
+  },
 }
 </script>
 

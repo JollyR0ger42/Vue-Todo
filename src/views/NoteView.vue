@@ -1,17 +1,17 @@
 <template>
   <div class="absolute-center">
     <div class="relative-center">
-      <Note :note="noteById($route.params.id)"/>
+      <NoteEdit :note="noteById($route.params.id)"/>
     </div>
   </div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex';
-import Note from '@/components/Note';
+import NoteEdit from '@/components/NoteEdit';
 
 export default {
-  components: {Note},
+  components: {NoteEdit},
   computed: mapGetters(['noteById']),
 }
 </script>

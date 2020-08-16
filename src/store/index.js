@@ -8,6 +8,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    lastCreated: -1,
     notes: [
       {
         id: 0,
@@ -38,6 +39,7 @@ export default new Vuex.Store({
       const id = state.notes[state.notes.length - 1].id + 1;
       const newNote = {name, id, todoList: []};
       state.notes.push(newNote)
+      state.lastCreated = id
     }
   },
   actions: {
@@ -48,7 +50,10 @@ export default new Vuex.Store({
     },
     noteById: state => id =>{
       return state.notes.find(note => note.id === parseInt(id))
-    }
+    },
+    lastCreated(state){
+      return state.lastCreated
+    },
   },
   plugins:[vuexLocal.plugin]
 })

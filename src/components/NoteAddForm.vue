@@ -12,17 +12,16 @@
         </div>
       </div>
     </transition>
-    <transition name="fade">
-      <div v-if="show" class="overlay" @click="$emit('toggle-add-form')">
-      </div>
-    </transition>
+    <Overlay :show="show" emitOnClick="toggle-add-form" v-on="$listeners"/>
   </div>
 </template>
 
 <script>
-import {mapMutations} from 'vuex';
+import {mapMutations, mapGetters} from 'vuex';
+import Overlay from './Overlay';
 
 export default {
+  computed: mapGetters(['lastCreated']),
   data(){
     return{
       noteTitle: ''
@@ -35,8 +34,10 @@ export default {
       this.createNote(this.noteTitle)
       this.noteTitle = ''
       this.$emit('toggle-add-form')
+      this.$router.push('/notes/' + this.lastCreated)
     }
-  }
+  },
+  components:{Overlay}
 }
 </script>
 
@@ -80,7 +81,6 @@ button:hover{
   height: 150px;
   z-index: 11;
 }
-
 
 .fade-enter-active,
 .fade-leave-active{

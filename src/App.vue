@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link class="home-link" to="/">notes</router-link>
-      <NoteAddButton @toggle-add-form="showAddForm = !showAddForm"/>
+      <router-link class="home-link" to="/">{{!$route.params.id ? 'notes' : '< notes'}}</router-link>
+      <NoteAddButton v-if="!$route.params.id" @toggle-add-form="showAddForm = !showAddForm"/>
     </div>
     <NoteAddForm :show="showAddForm" @toggle-add-form="showAddForm = !showAddForm"/>
     <transition name="slide">
