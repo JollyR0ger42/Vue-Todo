@@ -2,21 +2,42 @@
   <div id="app">
     <div id="nav">
       <router-link class="home-link" to="/">notes</router-link>
+      <NoteAddButton @toggle-add-form="showAddForm = !showAddForm"/>
     </div>
+    <NoteAddForm :show="showAddForm" @toggle-add-form="showAddForm = !showAddForm"/>
     <transition name="slide">
-      <router-view/>
+      <router-view key="router"/>
     </transition>
   </div>
 </template>
 
+<script>
+import NoteAddButton from './components/NoteAddButton';
+import NoteAddForm from './components/NoteAddForm';
+
+export default {
+  data(){
+    return{
+      showAddForm: false
+    }
+  },
+  components:{NoteAddButton, NoteAddForm}
+}
+</script>
+
 <style>
-.home-link{
+#nav{
   padding: 5px 0 10px;
-  display: block;
-  font-size: 50px;
-  font-weight: 700;
-  color: rgba(0, 0, 0, 0.5);
   background-color: skyblue;
+  margin-bottom: 10px;
+}
+.home-link{
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  font-size: 50px;
+}
+.home-link:hover{
+  color: black;
 }
 *{
   margin: 0;
@@ -24,7 +45,6 @@
   box-sizing: border-box;
 }
 #app {
-  position: relative;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -32,7 +52,7 @@
 }
 .slide-enter-active,
 .slide-leave-active{
-  transition: transform 1s;
+  transition: transform .5s;
 }
 .slide-enter{
   transform: translateX(100vw);
