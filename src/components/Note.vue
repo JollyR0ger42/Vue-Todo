@@ -16,7 +16,9 @@ export default {
 
 <style scoped>
 .note{
+  padding: 15px;
   margin-top: 10px;
+  border: 1px solid grey;
 }
 ul{
   margin-top: 10px;
