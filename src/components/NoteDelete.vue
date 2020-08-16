@@ -3,11 +3,14 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex';
+
 export default {
-  props: ['noteId'],
+  props: ['id'],
   methods:{
+    ...mapMutations(['removeNote']),
     handleClick(){
-      console.log('clicked')
+      this.removeNote(this.id)
     }
   }
 }

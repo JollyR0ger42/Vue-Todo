@@ -40,6 +40,9 @@ export default new Vuex.Store({
       const newNote = {name, id, todoList: []};
       state.notes.push(newNote)
       state.lastCreated = id
+    },
+    removeNote(state, id){
+      state.notes = state.notes.filter(note => note.id !== id)
     }
   },
   actions: {

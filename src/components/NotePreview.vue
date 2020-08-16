@@ -6,7 +6,7 @@
       <Todo v-for="todo in note.todoList" :key="todo.id" :todo="todo" />
     </ul>
     <hr>
-    <div class="delete-wrapper" @click.prevent><NoteDelete /></div>
+    <div class="delete-wrapper" @click.prevent><NoteDelete :id="note.id"/></div>
   </div>
 </template>
 

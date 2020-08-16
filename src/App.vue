@@ -39,16 +39,19 @@ export default {
 .home-link:hover{
   color: black;
 }
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
+
+
+/* Globas styles */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 .absolute-center{
   position: absolute;
@@ -58,6 +61,39 @@ export default {
   position: relative;
   left: -50%;
 }
+.pop-up{
+  border-radius: 10px;
+  position: fixed;
+  display: inline-block;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: white;
+  z-index: 11;
+}
+.overlay{
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* transition styles */
+.fade-enter-active,
+.fade-leave-active{
+  transition: opacity .5s;
+}
+.fade-enter,
+.fade-leave-to{
+  opacity: 0;
+}
+
 .slide-enter-active,
 .slide-leave-active{
   transition: transform .5s;
