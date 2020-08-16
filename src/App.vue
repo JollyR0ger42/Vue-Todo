@@ -50,6 +50,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
+.absolute-center{
+  position: absolute;
+  left: 50%;
+}
+.relative-center{
+  position: relative;
+  left: -50%;
+}
 .slide-enter-active,
 .slide-leave-active{
   transition: transform .5s;
@@ -59,13 +67,5 @@ export default {
 }
 .slide-leave-to{
   transform: translateX(-100vw);
-}
-.absolute-center{
-  position: absolute;
-  left: 50%;
-}
-.relative-center{
-  position: relative;
-  left: -50%;
 }
 </style>
