@@ -14,7 +14,9 @@ export default {
       EventBus.$emit('confirmation', {
         action: () => {
           this.removeNote(this.id)
-          this.$router.push('/')
+          if(this.$router.currentRoute.path !== '/'){
+            this.$router.push('/')
+          }
         },
         text: 'Delete note?'
       })

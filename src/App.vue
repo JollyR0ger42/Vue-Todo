@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link class="home-link" to="/">
-        {{!$route.params.id ? 'notes' : '< notes'}}
+        {{!$route.params.id ? 'notes' : '&larr;notes'}}
       </router-link>
       <NoteAddButton v-if="!$route.params.id" @toggle-add-form="showAddForm = true"/>
     </div>
