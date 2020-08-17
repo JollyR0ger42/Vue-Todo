@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition name="slide">
-      <div class="pop-up add-note-form" v-if="show" key="popup">
+      <div class="pop-up add-note-form" v-if="show">
         <form @submit.prevent="submit">
           <h1>Create note</h1>
           <input type="text" placeholder="Title" v-model="noteTitle">
@@ -46,25 +46,10 @@ export default {
 </script>
 
 <style scoped>
-.inactiveButton{
-  color: rgba(0, 0, 0, 0.1) !important;
-  cursor: default;
-}
 input{
   font-size: 20px;
 }
-button{
-  margin: 5px 10px;
-  background-color: #fff;
-  color: rgba(0, 0, 0, 0.5);
-  outline: none;
-  border: none;
-  font-size: 50px;
-}
-button:hover{
-  color: black;
-  cursor: pointer;
-}
+
 .add-note-form{
   width: 300px;
   height: 150px;

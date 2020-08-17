@@ -4,13 +4,18 @@
 
 <script>
 import {mapMutations} from 'vuex';
+import EventBus from '@/eventBus';
 
 export default {
   props: ['id'],
   methods:{
     ...mapMutations(['removeNote']),
     handleClick(){
-      this.removeNote(this.id)
+      EventBus.$emit('confirmation', {
+        action: () => this.removeNote(this.id),
+        text: 'Delete note?'
+      })
+      this.$emit('toggle-confirmation-popup')
     }
   }
 }

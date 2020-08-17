@@ -4,7 +4,7 @@
       <router-link class="component-link" 
         v-for="note in allNotes" :key="note.id" :to="'/notes/' + note.id"
       >
-        <NotePreview :note="note"/>
+        <NotePreview :note="note" v-on="$listeners"/>
       </router-link>
     </div>
   </div>

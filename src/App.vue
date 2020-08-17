@@ -1,12 +1,19 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link class="home-link" to="/">{{!$route.params.id ? 'notes' : '< notes'}}</router-link>
-      <NoteAddButton v-if="!$route.params.id" @toggle-add-form="showAddForm = !showAddForm"/>
+      <router-link class="home-link" to="/">
+        {{!$route.params.id ? 'notes' : '< notes'}}
+      </router-link>
+      <NoteAddButton v-if="!$route.params.id" @toggle-add-form="toggleAddForm"/>
     </div>
-    <NoteAddForm :show="showAddForm" @toggle-add-form="showAddForm = !showAddForm"/>
+
+    <ConfirmationPopup 
+      :show="showConfirmationPopup" 
+      @toggle-confirmation-popup="toggleConfirmationPopup"
+    />
+    <NoteAddForm :show="showAddForm" @toggle-add-form="toggleAddForm"/>
     <transition name="slide">
-      <router-view key="router"/>
+      <router-view @toggle-confirmation-popup="toggleConfirmationPopup"/>
     </transition>
   </div>
 </template>
@@ -14,14 +21,20 @@
 <script>
 import NoteAddButton from './components/NoteAddButton';
 import NoteAddForm from './components/NoteAddForm';
+import ConfirmationPopup from './components/ConfirmationPopup';
 
 export default {
   data(){
     return{
-      showAddForm: false
+      showAddForm: false,
+      showConfirmationPopup: false
     }
   },
-  components:{NoteAddButton, NoteAddForm}
+  methods:{
+    toggleAddForm(){this.showAddForm = !this.showAddForm},
+    toggleConfirmationPopup(){this.showConfirmationPopup = !this.showConfirmationPopup}
+  },
+  components:{NoteAddButton, NoteAddForm, ConfirmationPopup},
 }
 </script>
 
@@ -64,7 +77,9 @@ export default {
 .pop-up{
   border-radius: 10px;
   position: fixed;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   right: 0;
   left: 0;
   top: 0;
@@ -82,6 +97,24 @@ export default {
   bottom: 0;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Buttons */
+.inactiveButton{
+  color: rgba(0, 0, 0, 0.1) !important;
+  cursor: default;
+}
+button{
+  margin: 5px 10px;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.5);
+  outline: none;
+  border: none;
+  font-size: 50px;
+}
+button:hover{
+  color: black;
+  cursor: pointer;
 }
 
 /* transition styles */
