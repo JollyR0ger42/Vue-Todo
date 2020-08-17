@@ -123,7 +123,7 @@ button:hover{
 /* transition styles */
 .fade-enter-active,
 .fade-leave-active{
-  transition: opacity .5s;
+  transition: opacity .3s;
 }
 .fade-enter,
 .fade-leave-to{
@@ -132,7 +132,7 @@ button:hover{
 
 .slide-enter-active,
 .slide-leave-active{
-  transition: transform .5s;
+  transition: transform .3s;
 }
 .slide-enter{
   transform: translateX(100vw);

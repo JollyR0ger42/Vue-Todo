@@ -23,7 +23,7 @@ import {mapMutations, mapGetters} from 'vuex';
 import Overlay from './Overlay';
 
 export default {
-  computed: mapGetters(['lastCreated']),
+  computed: mapGetters(['lastNoteCreated']),
   data(){
     return{
       noteTitle: ''
@@ -37,7 +37,7 @@ export default {
         this.createNote(this.noteTitle.trim())
         this.noteTitle = ''
         this.$emit('toggle-add-form')
-        // this.$router.push('/notes/' + this.lastCreated)
+        // this.$router.push('/notes/' + this.lastNoteCreated)
       }
     }
   },
@@ -47,11 +47,12 @@ export default {
 
 <style scoped>
 input{
+  width: 250px;
   font-size: 20px;
 }
 
 .add-note-form{
-  width: 300px;
+  width: 270px;
   height: 150px;
 }
 </style>

@@ -7,18 +7,18 @@
     </ul>
     <hr>
     <div class="delete-wrapper" @click.prevent>
-      <NoteDelete :id="note.id" v-on="$listeners"/>
+      <NoteDeleteButton :id="note.id" v-on="$listeners"/>
     </div>
   </div>
 </template>
 
 <script>
 import Todo from './Todo';
-import NoteDelete from './NoteDelete';
+import NoteDeleteButton from './NoteDeleteButton';
 
 export default {
   props: ['note'],
-  components: {Todo, NoteDelete}
+  components: {Todo, NoteDeleteButton}
 }
 </script>
 

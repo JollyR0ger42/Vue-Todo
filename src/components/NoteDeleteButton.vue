@@ -12,7 +12,10 @@ export default {
     ...mapMutations(['removeNote']),
     handleClick(){
       EventBus.$emit('confirmation', {
-        action: () => this.removeNote(this.id),
+        action: () => {
+          this.removeNote(this.id)
+          this.$router.push('/')
+        },
         text: 'Delete note?'
       })
       this.$emit('toggle-confirmation-popup')
@@ -25,6 +28,7 @@ export default {
 i{
   font-size: 25px;
   color: rgba(0, 0, 0, 0.5);
+  height: 25px;
 }
 i:hover{
   cursor: pointer;

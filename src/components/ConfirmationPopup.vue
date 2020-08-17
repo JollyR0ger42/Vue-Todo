@@ -47,7 +47,7 @@ export default {
 
 <style scoped>
 .confirmation-popup{
-  width: 300px;
+  width: 270px;
   height: 150px;
 }
 </style>

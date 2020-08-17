@@ -1,7 +1,7 @@
 <template>
   <div class="absolute-center">
     <div class="relative-center">
-      <NoteEdit :note="noteById($route.params.id)"/>
+      <NoteEdit :note="noteById($route.params.id)" v-on="$listeners"/>
     </div>
   </div>
 </template>

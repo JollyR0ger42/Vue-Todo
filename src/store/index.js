@@ -8,11 +8,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    lastCreated: -1,
+    lastNoteCreated: -1,
     notes: [
       {
         id: 0,
         name: 'note 1',
+        lastTodoCreate: -1,
         todoList: [
           {
             id: 0,
@@ -36,10 +37,10 @@ export default new Vuex.Store({
   },
   mutations: {
     createNote(state, name){
-      const id = state.notes[state.notes.length - 1].id + 1;
+      const id = state.lastNoteCreated + 1;
       const newNote = {name, id, todoList: []};
       state.notes.push(newNote)
-      state.lastCreated = id
+      state.lastNoteCreated = id
     },
     removeNote(state, id){
       state.notes = state.notes.filter(note => note.id !== id)
@@ -54,8 +55,8 @@ export default new Vuex.Store({
     noteById: state => id =>{
       return state.notes.find(note => note.id === parseInt(id))
     },
-    lastCreated(state){
-      return state.lastCreated
+    lastNoteCreated(state){
+      return state.lastNoteCreated
     },
   },
   plugins:[vuexLocal.plugin]
