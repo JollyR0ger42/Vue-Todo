@@ -38,9 +38,8 @@ export default {
 
 <style>
 #nav{
-  padding: 5px 0 10px;
   background-color: skyblue;
-  margin-bottom: 10px;
+  height: 70px;
 }
 .home-link{
   color: rgba(0, 0, 0, 0.5);
@@ -65,12 +64,18 @@ export default {
   box-sizing: border-box;
 }
 .absolute-center{
-  position: absolute;
-  left: 50%;
+  position: fixed;
+  top: 70px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
 }
 .relative-center{
   position: relative;
-  left: -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .pop-up{
   border-radius: 10px;
@@ -118,7 +123,7 @@ button:hover{
 /* transition styles */
 .fade-enter-active,
 .fade-leave-active{
-  transition: opacity 5s;
+  transition: opacity .5s;
 }
 .fade-enter,
 .fade-leave-to{
@@ -127,7 +132,7 @@ button:hover{
 
 .slide-enter-active,
 .slide-leave-active{
-  transition: transform 5s;
+  transition: transform .5s;
 }
 .slide-enter{
   transform: translateX(100vw);

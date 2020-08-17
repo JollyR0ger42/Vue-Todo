@@ -37,7 +37,7 @@ export default {
         this.createNote(this.noteTitle.trim())
         this.noteTitle = ''
         this.$emit('toggle-add-form')
-        this.$router.push('/notes/' + this.lastCreated)
+        // this.$router.push('/notes/' + this.lastCreated)
       }
     }
   },
