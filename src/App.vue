@@ -4,16 +4,16 @@
       <router-link class="home-link" to="/">
         {{!$route.params.id ? 'notes' : '< notes'}}
       </router-link>
-      <NoteAddButton v-if="!$route.params.id" @toggle-add-form="toggleAddForm"/>
+      <NoteAddButton v-if="!$route.params.id" @toggle-add-form="showAddForm = true"/>
     </div>
 
     <ConfirmationPopup 
       :show="showConfirmationPopup" 
-      @toggle-confirmation-popup="toggleConfirmationPopup"
+      @toggle-confirmation-popup="showConfirmationPopup = false"
     />
-    <NoteAddForm :show="showAddForm" @toggle-add-form="toggleAddForm"/>
+    <NoteAddForm :show="showAddForm" @toggle-add-form="showAddForm = false"/>
     <transition name="slide">
-      <router-view @toggle-confirmation-popup="toggleConfirmationPopup"/>
+      <router-view @toggle-confirmation-popup="showConfirmationPopup = true"/>
     </transition>
   </div>
 </template>
@@ -31,8 +31,6 @@ export default {
     }
   },
   methods:{
-    toggleAddForm(){this.showAddForm = !this.showAddForm},
-    toggleConfirmationPopup(){this.showConfirmationPopup = !this.showConfirmationPopup}
   },
   components:{NoteAddButton, NoteAddForm, ConfirmationPopup},
 }
@@ -120,7 +118,7 @@ button:hover{
 /* transition styles */
 .fade-enter-active,
 .fade-leave-active{
-  transition: opacity .5s;
+  transition: opacity 5s;
 }
 .fade-enter,
 .fade-leave-to{
@@ -129,7 +127,7 @@ button:hover{
 
 .slide-enter-active,
 .slide-leave-active{
-  transition: transform .5s;
+  transition: transform 5s;
 }
 .slide-enter{
   transform: translateX(100vw);
