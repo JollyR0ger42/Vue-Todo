@@ -4,14 +4,14 @@
       <router-link class="home-link" to="/">
         {{!$route.params.id ? 'notes' : '&larr;notes'}}
       </router-link>
-      <NoteAddButton v-if="!$route.params.id" @toggle-add-form="showAddForm = true"/>
+      <NoteAddButton v-if="!$route.params.id" @toggle-add-form="showAddNoteForm = true"/>
     </div>
 
     <ConfirmationPopup 
       :show="showConfirmationPopup" 
       @toggle-confirmation-popup="showConfirmationPopup = false"
     />
-    <NoteAddForm :show="showAddForm" @toggle-add-form="showAddForm = false"/>
+    <NoteAddForm :show="showAddNoteForm" @toggle-add-form="showAddNoteForm = false"/>
     <transition name="slide">
       <router-view @toggle-confirmation-popup="showConfirmationPopup = true"/>
     </transition>
@@ -19,14 +19,14 @@
 </template>
 
 <script>
-import NoteAddButton from './components/NoteAddButton';
-import NoteAddForm from './components/NoteAddForm';
+import NoteAddButton from './components/Note/NoteAddButton';
+import NoteAddForm from './components/Note/NoteAddForm';
 import ConfirmationPopup from './components/ConfirmationPopup';
 
 export default {
   data(){
     return{
-      showAddForm: false,
+      showAddNoteForm: false,
       showConfirmationPopup: false
     }
   },

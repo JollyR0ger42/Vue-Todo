@@ -12,7 +12,7 @@
 
 <script>
 import {mapGetters} from 'vuex';
-import NotePreview from '@/components/NotePreview';
+import NotePreview from '@/components/Note/NotePreview';
 
 export default {
   name: 'Home',

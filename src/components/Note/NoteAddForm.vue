@@ -20,7 +20,7 @@
 
 <script>
 import {mapMutations, mapGetters} from 'vuex';
-import Overlay from './Overlay';
+import Overlay from '@/components/Overlay';
 
 export default {
   computed: mapGetters(['lastNoteCreated']),

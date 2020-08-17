@@ -8,7 +8,7 @@
 
 <script>
 import {mapGetters} from 'vuex';
-import NoteEdit from '@/components/NoteEdit';
+import NoteEdit from '@/components/Note/NoteEdit';
 
 export default {
   components: {NoteEdit},

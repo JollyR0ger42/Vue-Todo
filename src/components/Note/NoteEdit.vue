@@ -8,16 +8,25 @@
     <ul>
       <Todo v-for="todo in note.todoList" :key="todo.id" :todo="todo" />
     </ul>
+
+    <hr>
+    <TodoAddButton @toggle-add-todo="showAddTodoField = true"/>
   </div>
 </template>
 
 <script>
-import Todo from './Todo';
+import Todo from '@/components/Todo/Todo';
 import NoteDeleteButton from './NoteDeleteButton';
+import TodoAddButton from '@/components/Todo/TodoAddButton';
 
 export default {
+  data(){
+    return{
+      showAddTodoField: false
+    }
+  },
   props: ['note'],
-  components: {Todo, NoteDeleteButton}
+  components: {Todo, NoteDeleteButton, TodoAddButton}
 }
 </script>
 
@@ -33,7 +42,9 @@ export default {
   margin-top: 10px;
 }
 ul{
-  margin-top: 10px;
   list-style-type: none;
+}
+hr{
+  margin: 10px 0;
 }
 </style>

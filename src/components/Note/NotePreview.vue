@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Todo from './Todo';
+import Todo from '@/components/Todo/Todo';
 import NoteDeleteButton from './NoteDeleteButton';
 
 export default {
