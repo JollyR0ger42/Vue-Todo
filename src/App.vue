@@ -101,6 +101,9 @@ export default {
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
 }
+hr{
+  border: 2px solid black;
+}
 
 /* Buttons */
 .inactiveButton{

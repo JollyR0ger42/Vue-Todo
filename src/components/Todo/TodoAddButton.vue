@@ -1,5 +1,5 @@
 <template>
-  <i class="fas fa-plus" @click="emite('toggle-add-todo')"></i>
+  <i class="fas fa-plus" @click="$emit('toggle-add-todo')"></i>
 </template>
 
 <style scoped>

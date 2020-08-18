@@ -12,5 +12,6 @@ export default {
 li{
   font-size: 18px;
   margin: 5px 0;
+  border-bottom: 1px solid grey;
 }
 </style>
