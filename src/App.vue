@@ -109,6 +109,10 @@ hr{
   margin: 5px 0;
   border-bottom: 1px solid grey;
 }
+input{
+  text-align: center;
+  min-width: 35px;
+}
 
 /* Buttons */
 .inactiveButton{

@@ -70,9 +70,6 @@ li span{
 button{
   margin: 0 5px;
 }
-input{
-  text-align: center;
-}
 .done{
   color: rgba(0, 0, 0, 0.35);
 }

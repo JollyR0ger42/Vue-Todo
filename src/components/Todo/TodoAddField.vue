@@ -31,9 +31,6 @@ export default {
 </script>
 
 <style scoped>
-input{
-  text-align: center;
-}
 button{
   margin: 5px;
   font-size: 18px;
