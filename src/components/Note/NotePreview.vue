@@ -3,7 +3,9 @@
     <h1>{{note.title}}</h1>
     <hr>
     <ul>
-      <Todo v-for="todo in note.todoList" :key="todo.id" :todo="todo" />
+      <li class="todo" v-for="todo in note.todoList" :key="todo.id" :todo="todo">
+        {{todo.text}}
+      </li>
     </ul>
     <hr>
     <div class="delete-wrapper" @click.prevent>
@@ -13,12 +15,11 @@
 </template>
 
 <script>
-import Todo from '@/components/Todo/Todo';
 import NoteDeleteButton from './NoteDeleteButton';
 
 export default {
   props: ['note'],
-  components: {Todo, NoteDeleteButton}
+  components: {NoteDeleteButton}
 }
 </script>
 

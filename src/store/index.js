@@ -16,19 +16,23 @@ export default new Vuex.Store({
         todoList: [
           {
             id: 0,
-            text: 'То'
+            text: 'То',
+            status: false
           },
           {
             id: 1,
-            text: 'Се'
+            text: 'Се',
+            status: false
           },
           {
             id: 2,
-            text: 'Пятое'
+            text: 'Пятое',
+            status: true
           },
           {
             id: 3,
-            text: 'Десятое'
+            text: 'Десятое',
+            status: false
           },
         ]
       }

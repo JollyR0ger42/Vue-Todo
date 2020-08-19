@@ -8,7 +8,12 @@
     </div>
     <hr>
     <ul>
-      <Todo v-for="todo in noteState.todoList" :key="todo.id" :todo="todo" />
+      <TodoEdit 
+        @set-todo="setTodo" 
+        @delete-todo="deleteTodo"
+        v-for="todo in noteState.todoList" 
+        :key="todo.id" :todo="todo" 
+      />
     </ul>
     <TodoAddField 
       v-if="showAddTodoField" 
@@ -23,7 +28,7 @@
 
 <script>
 import {mapGetters} from 'vuex';
-import Todo from '@/components/Todo/Todo';
+import TodoEdit from '@/components/Todo/TodoEdit';
 import TodoAddButton from '@/components/Todo/TodoAddButton';
 import TodoAddField from '@/components/Todo/TodoAddField';
 import NoteTitleEdit from './NoteTitleEdit';
@@ -49,7 +54,7 @@ export default {
     },
   props: ['note'],
   components: {
-    Todo, TodoAddButton, TodoAddField, NoteTitleEdit
+    TodoEdit, TodoAddButton, TodoAddField, NoteTitleEdit
   },
   beforeMount(){
     this.noteState = JSON.parse(JSON.stringify(this.noteById(this.note.id)))
@@ -60,11 +65,19 @@ export default {
   methods:{
     handleTodoSubmit(text){
       const id = this.noteState.todoList[this.noteState.todoList.length - 1].id + 1;
-      const newTodo = {id, text}
+      const newTodo = {id, text, status: false}
       this.noteState.todoList.push(newTodo)
     },
     setTitle(title){
       this.noteState.title = title
+    },
+    setTodo(newTodo){
+      console.log(this.noteState)
+      let todo = this.noteState.todoList.find(todo => todo.id === newTodo.id);
+      Object.assign(todo, newTodo)
+    },
+    deleteTodo(){
+      console.log('deleted')
     }
   }
 }

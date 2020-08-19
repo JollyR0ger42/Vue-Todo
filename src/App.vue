@@ -104,6 +104,11 @@ export default {
 hr{
   border: 2px solid black;
 }
+.todo{
+  font-size: 18px;
+  margin: 5px 0;
+  border-bottom: 1px solid grey;
+}
 
 /* Buttons */
 .inactiveButton{
