@@ -69,6 +69,7 @@ export default {
 .title-input{
   font-size: 32px;
   height: 32px;
+  min-width: 100px;
 }
 i{
   font-size: 25px;
