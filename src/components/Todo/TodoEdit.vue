@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import EventBus from '@/eventBus';
+
 export default {
   data(){
     return{
@@ -30,6 +32,11 @@ export default {
   },
   mounted(){
     this.todoWidth = this.$refs.text.offsetWidth
+    EventBus.$on('disable-others', (id) => {
+      if(this.todo.id !== id){
+        this.discard()
+      }
+    })
   },
   methods: {
     submit(){
@@ -43,6 +50,7 @@ export default {
     enableTodoEdit(){
       this.todoEdit = true
       setTimeout( () => this.$refs.input.focus(), 0)
+      EventBus.$emit('disable-others', this.todo.id)
     },
     deleteTodo(){
       this.$emit('delete-todo', this.todo.id)
