@@ -52,8 +52,8 @@ export default {
     },
     enableTodoEdit(){
       this.todoEdit = true
-      setTimeout( () => this.$refs.input.focus(), 0)
       EventBus.$emit('disable-others', this.todo.id)
+      setTimeout( () => this.$refs.input.focus(), 0)
     },
     deleteTodo(){
       this.$emit('delete-todo', this.todo.id)

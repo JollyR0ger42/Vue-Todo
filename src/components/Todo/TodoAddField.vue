@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  props: ['width'],
+  props: ['width', 'showAddTodoField'],
   data(){
     return{
       textInput: '',
@@ -26,8 +26,8 @@ export default {
       }
     }
   },
-  updated(){
-    this.$refs.input.focus()
+  mounted(){
+    setTimeout(() => this.$refs.input.focus(), 0)
   }
 }
 </script>
