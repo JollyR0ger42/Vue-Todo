@@ -1,11 +1,10 @@
 <template>
   <li class="todo">
     <input type="checkbox" v-model="todo.status">
-    <span :class="{done: todo.status}" v-if="!todoEdit" ref="text">{{todo.text}}</span>
+    <p :class="{done: todo.status}" v-if="!todoEdit" ref="text">{{todo.text}}</p>
     <form v-show="todoEdit" @submit.prevent="submit">
       <input
         v-model="newText"
-        class="title-input"
         :style="{'width': todoWidth + 'px'}"
         type="text"
         ref="input"
@@ -63,7 +62,7 @@ li{
 i{
   font-size: 15px;
 }
-li span{
+li p{
   margin: 0 10px;
   flex-grow: 1;
 }
@@ -72,5 +71,8 @@ button{
 }
 .done{
   color: rgba(0, 0, 0, 0.35);
+}
+form{
+  margin: 0 10px;
 }
 </style>

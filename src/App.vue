@@ -59,6 +59,8 @@ export default {
 
 /* Globas styles */
 *{
+  word-break: break-all;
+  white-space: normal;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -111,7 +113,13 @@ hr{
 }
 input{
   text-align: center;
-  min-width: 35px;
+}
+.note{
+  min-width: 200px;
+  max-width: 97vw;
+}
+ul{
+  width: 100%;
 }
 
 /* Buttons */

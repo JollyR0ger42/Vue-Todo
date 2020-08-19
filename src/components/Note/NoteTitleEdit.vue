@@ -53,6 +53,9 @@ export default {
   mounted(){
     this.titleWidth = this.$refs.title.offsetWidth
     this.newTitle = this.title
+  },
+  updated(){
+    this.titleWidth = this.$refs.title.offsetWidth
   }
 }
 </script>
