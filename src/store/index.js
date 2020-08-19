@@ -8,7 +8,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    lastNoteCreated: -1,
+    lastNoteCreated: 0,
     notes: [
       {
         id: 0,
@@ -39,9 +39,9 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    createNote(state, name){
+    createNote(state, title){
       const id = state.lastNoteCreated + 1;
-      const newNote = {name, id, todoList: []};
+      const newNote = {title, id, todoList: []};
       state.notes.push(newNote)
       state.lastNoteCreated = id
     },

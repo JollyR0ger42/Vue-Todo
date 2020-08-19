@@ -67,7 +67,9 @@ export default {
   methods:{
     ...mapMutations(['updateNote']),
     handleTodoSubmit(text){
-      const id = this.noteState.todoList[this.noteState.todoList.length - 1].id + 1;
+      let id = this.noteState.todoList[this.noteState.todoList.length - 1]?.id + 1;
+      id = id ? id : 0
+      console.log(id)
       const newTodo = {id, text, status: false}
       this.noteState.todoList.push(newTodo)
     },
