@@ -2,7 +2,9 @@
   <div class="note" ref="note">
     <NoteTitleEdit :title="noteState.title" :id="noteState.id" @set-title="setTitle" v-on="$listeners"/>
     <div class="buttons">
-      <button><i :class="{inactiveButton: !noteWasChanged}" class="fas fa-check"></i></button>
+      <button @click="setNote">
+        <i :class="{inactiveButton: !noteWasChanged}" class="fas fa-check"></i>
+      </button>
       <button><i :class="{inactiveButton: !noteWasChanged}" class="fas fa-times"></i></button>
       <button><i :class="{inactiveButton: !cachedState}" class="fas fa-redo redo"></i></button>
     </div>
@@ -27,7 +29,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import {mapGetters, mapMutations} from 'vuex';
 import TodoEdit from '@/components/Todo/TodoEdit';
 import TodoAddButton from '@/components/Todo/TodoAddButton';
 import TodoAddField from '@/components/Todo/TodoAddField';
@@ -63,6 +65,7 @@ export default {
     this.noteWidth = this.$refs.note.offsetWidth
   },
   methods:{
+    ...mapMutations(['updateNote']),
     handleTodoSubmit(text){
       const id = this.noteState.todoList[this.noteState.todoList.length - 1].id + 1;
       const newTodo = {id, text, status: false}
@@ -72,12 +75,14 @@ export default {
       this.noteState.title = title
     },
     setTodo(newTodo){
-      console.log(this.noteState)
       let todo = this.noteState.todoList.find(todo => todo.id === newTodo.id);
       Object.assign(todo, newTodo)
     },
-    deleteTodo(){
-      console.log('deleted')
+    deleteTodo(id){
+      this.noteState.todoList = this.noteState.todoList.filter(todo => todo.id !== id)
+    },
+    setNote(){
+      this.updateNote(this.noteState)
     }
   }
 }

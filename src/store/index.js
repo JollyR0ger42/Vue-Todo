@@ -47,6 +47,10 @@ export default new Vuex.Store({
     },
     removeNote(state, id){
       state.notes = state.notes.filter(note => note.id !== id)
+    },
+    updateNote(state, updatedNote){
+      let note = state.notes.find(note => note.id === updatedNote.id);
+      Object.assign(note, updatedNote)
     }
   },
   actions: {

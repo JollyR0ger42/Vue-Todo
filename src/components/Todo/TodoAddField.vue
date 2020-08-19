@@ -24,7 +24,7 @@ export default {
       this.textInput = ''
     }
   },
-  mounted(){
+  updated(){
     this.$refs.input.focus()
   }
 }

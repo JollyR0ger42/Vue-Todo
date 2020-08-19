@@ -13,7 +13,7 @@
     </form>
     <div class="buttons">
       <button v-if="!todoEdit" @click="enableTodoEdit"><i class="fas fa-pen"></i></button>
-      <button v-if="!todoEdit"><i class="fas fa-trash"></i></button>
+      <button v-if="!todoEdit" @click="deleteTodo"><i class="fas fa-trash"></i></button>
       <button v-if="todoEdit" @click="submit"><i class="fas fa-check"></i></button>
       <button v-if="todoEdit" @click="discard"><i class="fas fa-times"></i></button>
     </div>
@@ -44,6 +44,9 @@ export default {
     enableTodoEdit(){
       this.todoEdit = true
       setTimeout( () => this.$refs.input.focus(), 0)
+    },
+    deleteTodo(){
+      this.$emit('delete-todo', this.todo.id)
     }
   },
   props: ['todo']
