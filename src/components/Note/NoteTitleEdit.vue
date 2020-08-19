@@ -10,7 +10,7 @@
       <input
         v-model="newTitle"
         class="title-input"
-        :style="{'width': titleWidth + 'px'}"
+        :style="{'width': titleWidth + 10 + 'px'}"
         type="text"
         ref="input"
       />
