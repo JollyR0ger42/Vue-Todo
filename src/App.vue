@@ -116,11 +116,18 @@ button{
   color: rgba(0, 0, 0, 0.5);
   outline: none;
   border: none;
-  font-size: 50px;
 }
 button:hover{
   color: black;
   cursor: pointer;
+}
+i{
+  font-size: 35px;
+  color: rgba(0, 0, 0, 0.5);
+}
+i:hover{
+  cursor: pointer;
+  color: black;
 }
 
 /* transition styles */

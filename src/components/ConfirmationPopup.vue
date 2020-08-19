@@ -50,4 +50,7 @@ export default {
   width: 270px;
   height: 150px;
 }
+i{
+  font-size: 50px;
+}
 </style>

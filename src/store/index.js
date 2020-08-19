@@ -12,8 +12,7 @@ export default new Vuex.Store({
     notes: [
       {
         id: 0,
-        name: 'note 1',
-        lastTodoCreate: -1,
+        title: 'note 1',
         todoList: [
           {
             id: 0,

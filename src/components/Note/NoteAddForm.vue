@@ -10,7 +10,7 @@
           <button @click="submit">
             <i class="fas fa-check" :class="{inactiveButton: !noteTitle.trim()}"></i>
           </button>
-          <button @click.stop="$emit('toggle-add-form')"><i class="fas fa-times"></i></button>
+          <button @click.stop="discard"><i class="fas fa-times"></i></button>
         </div>
       </div>
     </transition>
@@ -32,6 +32,10 @@ export default {
   props:['show'],
   methods:{
     ...mapMutations(['createNote']),
+    discard(){
+      this.noteTitle = ''
+      this.$emit('toggle-add-form')
+    },
     submit(){
       if(this.noteTitle.trim()){
         this.createNote(this.noteTitle.trim())
@@ -50,7 +54,9 @@ input{
   width: 250px;
   font-size: 20px;
 }
-
+i{
+  font-size: 50px;
+}
 .add-note-form{
   width: 270px;
   height: 150px;

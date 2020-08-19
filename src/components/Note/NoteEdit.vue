@@ -1,12 +1,14 @@
 <template>
   <div class="note" ref="note">
-    <div class="title">
-      <h1>{{note.name}}</h1>
-      <NoteDeleteButton :id="note.id" v-on="$listeners"/>
+    <NoteTitleEdit :title="noteState.title" :id="noteState.id" @set-title="setTitle" v-on="$listeners"/>
+    <div class="buttons">
+      <button><i :class="{inactiveButton: !noteWasChanged}" class="fas fa-check"></i></button>
+      <button><i :class="{inactiveButton: !noteWasChanged}" class="fas fa-times"></i></button>
+      <button><i :class="{inactiveButton: !cachedState}" class="fas fa-redo redo"></i></button>
     </div>
     <hr>
     <ul>
-      <Todo v-for="todo in note.todoList" :key="todo.id" :todo="todo" />
+      <Todo v-for="todo in noteState.todoList" :key="todo.id" :todo="todo" />
     </ul>
     <TodoAddField 
       v-if="showAddTodoField" 
@@ -20,41 +22,58 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 import Todo from '@/components/Todo/Todo';
-import NoteDeleteButton from './NoteDeleteButton';
 import TodoAddButton from '@/components/Todo/TodoAddButton';
 import TodoAddField from '@/components/Todo/TodoAddField';
+import NoteTitleEdit from './NoteTitleEdit';
 
 export default {
   data(){
     return{
       showAddTodoField: false,
       noteWidth: 0,
+      noteState: undefined,
+      cachedState: undefined,
     }
   },
+  computed: {
+    ...mapGetters(['noteById']),
+    noteWasChanged(){
+      if(JSON.stringify(this.noteState) === JSON.stringify(this.noteById(this.note.id))){
+        return false
+      } else {
+        return true
+      }
+    }
+    },
   props: ['note'],
   components: {
-    Todo, NoteDeleteButton, TodoAddButton, TodoAddField
+    Todo, TodoAddButton, TodoAddField, NoteTitleEdit
+  },
+  beforeMount(){
+    this.noteState = JSON.parse(JSON.stringify(this.noteById(this.note.id)))
   },
   mounted(){
     this.noteWidth = this.$refs.note.offsetWidth
   },
   methods:{
-    handleTodoSubmit(todoText){
-      console.log(todoText)
+    handleTodoSubmit(text){
+      const id = this.noteState.todoList[this.noteState.todoList.length - 1].id + 1;
+      const newTodo = {id, text}
+      this.noteState.todoList.push(newTodo)
+    },
+    setTitle(title){
+      this.noteState.title = title
     }
   }
 }
 </script>
 
 <style scoped>
-.title{
+.buttons{
   display: flex;
-  align-items: center;
   justify-content: center;
-}
-.title h1{
-  margin-right: 10px;
 }
 .note{
   margin-top: 10px;
@@ -65,5 +84,11 @@ ul{
 }
 hr{
   margin: 10px 0;
+}
+i{
+  font-size: 25px;
+}
+.redo{
+  font-size: 20px;
 }
 </style>

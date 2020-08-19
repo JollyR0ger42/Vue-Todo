@@ -1,6 +1,6 @@
 <template>
   <div class="note">
-    <h1>{{note.name}}</h1>
+    <h1>{{note.title}}</h1>
     <hr>
     <ul>
       <Todo v-for="todo in note.todoList" :key="todo.id" :todo="todo" />
