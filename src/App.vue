@@ -125,7 +125,7 @@ ul{
 /* Buttons */
 .inactiveButton{
   color: rgba(0, 0, 0, 0.1) !important;
-  cursor: default;
+  cursor: default !important;
 }
 button{
   margin: 5px 10px;

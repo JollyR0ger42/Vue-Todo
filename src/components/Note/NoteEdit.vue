@@ -5,8 +5,12 @@
       <button @click="setNote">
         <i :class="{inactiveButton: !noteWasChanged}" class="fas fa-check"></i>
       </button>
-      <button><i :class="{inactiveButton: !noteWasChanged}" class="fas fa-times"></i></button>
-      <button><i :class="{inactiveButton: !cachedState}" class="fas fa-redo redo"></i></button>
+      <button @click="discardChanges">
+        <i :class="{inactiveButton: !noteWasChanged}" class="fas fa-times"></i>
+      </button>
+      <button @click="resetState">
+        <i :class="{inactiveButton: !cachedState}" class="fas fa-redo redo"></i>
+      </button>
     </div>
     <hr>
     <ul>
@@ -24,7 +28,7 @@
       @submit="handleTodoSubmit"
     />
     <hr>
-    <TodoAddButton @toggle-add-todo="showAddTodoField = true"/>
+    <TodoAddButton :inactiveButton="showAddTodoField" @toggle-add-todo="showAddTodoField = true"/>
   </div>
 </template>
 
@@ -83,7 +87,22 @@ export default {
       this.noteState.todoList = this.noteState.todoList.filter(todo => todo.id !== id)
     },
     setNote(){
-      this.updateNote(this.noteState)
+      if(this.noteWasChanged){
+        this.updateNote(this.noteState)
+        this.noteState = JSON.parse(JSON.stringify(this.noteById(this.note.id)))
+      }
+    },
+    discardChanges(){
+      if(this.noteWasChanged){
+        this.cachedState = this.noteState
+        this.noteState = JSON.parse(JSON.stringify(this.noteById(this.note.id)))
+      }
+    },
+    resetState(){
+      if(this.cachedState){
+        this.noteState = this.cachedState
+        this.cachedState = undefined
+      }
     }
   }
 }

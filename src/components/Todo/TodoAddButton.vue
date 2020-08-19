@@ -1,6 +1,19 @@
 <template>
-  <i class="fas fa-plus" @click="$emit('toggle-add-todo')"></i>
+  <i :class="{inactiveButton: inactiveButton}" class="fas fa-plus" @click="handleClick"></i>
 </template>
+
+<script>
+export default {
+  props: ['inactiveButton'],
+  methods:{
+    handleClick(){
+      if(!this.inactiveButton){
+        this.$emit('toggle-add-todo')
+      }
+    }
+  }
+}
+</script>
 
 <style scoped>
 i{

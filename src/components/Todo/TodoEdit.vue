@@ -5,7 +5,7 @@
     <form v-show="todoEdit" @submit.prevent="submit">
       <input
         v-model="newText"
-        :style="{'width': todoWidth + 'px'}"
+        :style="{'width': todoWidth + 5 + 'px'}"
         type="text"
         ref="input"
       />
@@ -29,6 +29,9 @@ export default {
       newText: this.todo.text,
       todoWidth: 0,
     }
+  },
+  updated(){
+    this.todoWidth = this.$refs.text.offsetWidth
   },
   mounted(){
     this.todoWidth = this.$refs.text.offsetWidth
@@ -82,5 +85,9 @@ button{
 }
 form{
   margin: 0 10px;
+}
+input{
+  height: 22px;
+  font-size: 18px;
 }
 </style>

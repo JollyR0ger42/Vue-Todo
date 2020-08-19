@@ -8,35 +8,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    lastNoteCreated: 0,
-    notes: [
-      {
-        id: 0,
-        title: 'note 1',
-        todoList: [
-          {
-            id: 0,
-            text: 'То',
-            status: false
-          },
-          {
-            id: 1,
-            text: 'Се',
-            status: false
-          },
-          {
-            id: 2,
-            text: 'Пятое',
-            status: true
-          },
-          {
-            id: 3,
-            text: 'Десятое',
-            status: false
-          },
-        ]
-      }
-    ]
+    lastNoteCreated: -1,
+    notes: []
   },
   mutations: {
     createNote(state, title){

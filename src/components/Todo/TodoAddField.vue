@@ -20,8 +20,10 @@ export default {
   },
   methods:{
     handleSubmit(){
-      this.$emit('submit', this.textInput)
-      this.textInput = ''
+      if(this.textInput.trim()){
+        this.$emit('submit', this.textInput)
+        this.textInput = ''
+      }
     }
   },
   updated(){
